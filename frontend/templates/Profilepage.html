@@ -1,0 +1,132 @@
+<!-- Krish Kanda -->
+<!-- This is the profile page where users can view and edit their profile info -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LinkedOut — My Profile</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='Profilepage.css') }}"
+    />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  </head>
+
+  <body>
+    <!-- navbar same as homepage -->
+    <nav class="navbar">
+      <div class="nav-logo">
+        <span>LinkedOut</span>
+      </div>
+      <div class="nav-right">
+        <a href="/home" class="back-btn"
+          ><i class="ph ph-arrow-left"></i> Back to Home</a
+        >
+        <button id="logout-btn"><i class="ph ph-sign-out"></i> Logout</button>
+      </div>
+    </nav>
+
+    <div class="profile-container">
+      <!-- This is the top section with name, username and bio -->
+      <div class="profile-header">
+        <div class="avatar">
+          <i class="ph ph-user-circle"></i>
+        </div>
+        <div class="profile-info">
+          <h1 id="display-name">Loading...</h1>
+          <p class="username" id="display-username"></p>
+          <p class="bio" id="display-bio">No bio yet.</p>
+          <button class="edit-btn" id="toggle-edit-btn">
+            <i class="ph ph-pencil"></i> Edit Profile
+          </button>
+        </div>
+      </div>
+
+      <!-- This is the edit form, hidden by default until user clicks edit -->
+      <div class="edit-form" id="edit-form" style="display: none">
+        <h2>Edit Profile</h2>
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" id="input-name" placeholder="Your full name" />
+        </div>
+        <div class="form-group">
+          <label>Bio</label>
+          <textarea
+            id="input-bio"
+            placeholder="Tell us a little about yourself"
+          ></textarea>
+        </div>
+        <div class="form-btns">
+          <button id="save-btn">Save</button>
+          <button id="cancel-btn">Cancel</button>
+        </div>
+        <p id="save-msg"></p>
+      </div>
+
+      <div class="profile-sections">
+        <!-- This handles the skills section -->
+        <div class="section-card">
+          <div class="section-header">
+            <h2><i class="ph ph-wrench"></i> Skills</h2>
+            <button class="add-btn" id="add-skill-btn">
+              <i class="ph ph-plus"></i>
+            </button>
+          </div>
+          <div id="skills-list" class="tag-list">
+            <p class="empty-msg">No skills added yet.</p>
+          </div>
+          <div class="add-input" id="skill-input-area" style="display: none">
+            <input type="text" id="skill-input" placeholder="e.g. Python" />
+            <button id="save-skill-btn">Add</button>
+          </div>
+        </div>
+
+        <!-- This handles the experience section -->
+        <div class="section-card">
+          <div class="section-header">
+            <h2><i class="ph ph-briefcase"></i> Experience</h2>
+            <button class="add-btn" id="add-exp-btn">
+              <i class="ph ph-plus"></i>
+            </button>
+          </div>
+          <div id="exp-list">
+            <p class="empty-msg">No experience added yet.</p>
+          </div>
+          <div class="add-input" id="exp-input-area" style="display: none">
+            <input type="text" id="exp-title" placeholder="Job Title" />
+            <input type="text" id="exp-company" placeholder="Company" />
+            <input type="text" id="exp-years" placeholder="e.g. 2023 - 2024" />
+            <button id="save-exp-btn">Add</button>
+          </div>
+        </div>
+
+        <!-- This handles the resume upload and display section -->
+        <div class="section-card">
+          <div class="section-header">
+            <h2><i class="ph ph-file-text"></i> Resume</h2>
+            <button class="add-btn" id="upload-resume-btn">
+              <i class="ph ph-upload"></i>
+            </button>
+          </div>
+          <div id="resume-section">
+            <p class="empty-msg" id="resume-msg">No resume uploaded yet.</p>
+          </div>
+          <!-- This is the upload input, hidden until you click the upload button -->
+          <div class="add-input" id="resume-input-area" style="display: none">
+            <input
+              type="file"
+              id="resume-file-input"
+              accept=".pdf,.doc,.docx"
+            />
+            <button id="save-resume-btn">Upload</button>
+          </div>
+          <p id="resume-save-msg"></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='Profilepage.js') }}"></script>
+  </body>
+</html>

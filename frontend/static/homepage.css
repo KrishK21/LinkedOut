@@ -1,0 +1,340 @@
+/* homepage.css - styles for the main homepage after login */
+/* Matches the color scheme from style.css */
+
+:root {
+  --bg-color: #121212;
+  --card-bg: rgba(26, 26, 26, 0.85);
+  --primary: #D97742;
+  --primary-hover: #c2622e;
+  --primary-light: rgba(217, 119, 66, 0.2);
+  --text-main: #ECEBE7;
+  --text-muted: #696969;
+  --border: rgba(217, 119, 66, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  min-height: 100vh;
+}
+
+/* This handles the navbar at the top */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background: rgba(26, 26, 26, 0.95);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-logo span {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+/* This handles the tab system I created on our homepage  */
+.nav-tabs {
+  display: flex;
+  gap: 4px;
+}
+/* Since we have multiple tabs on our homepage that takes us to other section sof our website this handles each individual tab */
+.nav-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* This handles the highlighting of the tab currently selected. */
+.nav-tab.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+/* This highlights the tab when hovered above it */
+.nav-tab:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* This handles the avatar dropdown menu on the right */
+.nav-right {
+  position: relative;
+}
+
+.avatar-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: var(--text-main);
+  font-size: 14px;
+}
+
+.avatar-btn i {
+  font-size: 28px;
+  color: var(--primary);
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 48px;
+  background: #1a1a1a;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  min-width: 180px;
+  padding: 8px 0;
+  z-index: 200;
+}
+
+.dropdown a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.dropdown a:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.dropdown hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 4px 0;
+}
+
+.logout-link {
+  color: #ef4444 !important;
+}
+
+/* This handles showing the dropdown when the menu is open */
+.avatar-menu.open .dropdown {
+  display: block;
+}
+
+/* This handles the hero welcome section */
+.hero {
+  padding: 64px 32px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-content h2 {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.tagline {
+  font-size: 20px;
+  color: var(--primary);
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.hero-sub {
+  color: var(--text-muted);
+  margin-bottom: 32px;
+  font-size: 15px;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.btn-primary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.2s ease;
+   background: var(--primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+/* This handles the application tracker section */
+.tracker {
+  padding: 48px 32px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.tracker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.tracker-header h2 {
+  font-size: 22px;
+}
+
+.tracker-filters {
+  display: flex;
+  gap: 8px;
+}
+
+.filter-btn {
+  padding: 6px 14px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover, .filter-btn.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+/* This handles the tracker stat cards */
+.tracker-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.tracker-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 28px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tracker-card:hover {
+  border-color: var(--primary);
+  background: rgba(217, 119, 66, 0.05);
+}
+
+.tracker-card i {
+  font-size: 32px;
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+
+.tracker-card h3 {
+  font-size: 36px;
+  margin-bottom: 4px;
+}
+
+.tracker-card p {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.card-detail {
+  font-size: 12px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+}
+
+/* This handles the footer */
+footer {
+  background: rgba(26, 26, 26, 0.95);
+  border-top: 1px solid var(--border);
+  padding: 40px 32px;
+  margin-top: 48px;
+}
+
+.footer-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer-brand span {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.footer-tagline {
+  color: var(--text-muted);
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+.footer-info h4 {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: var(--primary);
+}
+
+.footer-info p {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.footer-copy {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #444;
+}
+
+/* This handles mobile sizing */
+@media (max-width: 768px) {
+  .tracker-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tracker-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+  }
+}

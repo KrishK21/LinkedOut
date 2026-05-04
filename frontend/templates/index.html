@@ -1,0 +1,93 @@
+<!-- This contains the hmtl code for our login page and it also contains the sign up page, and this is hidden and only comes up when a user 
+ is new and need to create an account in order to use our webpage.
+ Most of the knowledge for this file came from W3schools, since html is a new area for me, i had to research an learn the basics of it and W3schools was quite helpful.
+ Another amazing resource was MDN web docus Html page, this was more detailed comapred to W3schools and it ha alot of examples and step by step guides.
+ Another helpful resource was from freecodecamp, they had a guide on html i was able to learn from.
+ https://www.freecodecamp.org/news/introduction-to-html-basics/
+ https://www.w3schools.com/html/html_intro.asp
+ https://developer.mozilla.org/en-US/docs/Web/HTML
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- This is to handle the page scaling like a mobile if used. -->
+  <title>LinkedOut</title>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script> <!-- Input icons from phosphor library. -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+
+<body>
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="login-container">
+    <div class="login-left">
+      <div class="login-logo">
+        <span>Linked</span><span class="logo-box">Out</span>
+      </div>
+      <div class="hero-text">
+        <h1>Just jobs.<br><span>No noise.</span></h1>
+      </div>
+    </div>
+    <div class="login-right">
+      <form id="login-form">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <div class="input-wrapper">
+            <i class="ph ph-user"></i>
+            <input type="text" id="username" placeholder="your username" />
+          </div>
+          <div class="error-message" id="username-error"></div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="input-wrapper">
+            <i class="ph ph-lock-key"></i>
+            <input type="password" id="password" placeholder="••••••••" />
+            <button type="button" class="password" id="toggle-pw" aria-label="Toggle password visibility">
+              <i class="ph ph-eye"></i>
+            </button>
+          </div>
+          <div class="error-message" id="pw-error"></div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <a href="#" class="signup" id="show-signup"><span>No account? Join now</span></a>
+        </div>
+        <button type="submit" class="primary-button" id="login-btn">
+          <span class="btn-text">Sign In</span>
+          <i class="ph ph-spinner-gap spinner"></i>
+        </button>
+      </form>
+
+      <!-- This handles if the user is new to our webpage and this allows them to create an account in order to use our webpage. -->
+      <form id="signup-form" style="display:none;">
+        <div class="form-group">
+          <label for="new-username">Username</label>
+          <div class="input-wrapper">
+            <i class="ph ph-user"></i>
+            <input type="text" id="new-username" placeholder="pick a username" />
+          </div>
+          <div class="error-message" id="new-username-error"></div>
+        </div>
+        <div class="form-group">
+          <label for="new-password">Password</label>
+          <div class="input-wrapper">
+            <i class="ph ph-lock-key"></i>
+            <input type="password" id="new-password" placeholder="••••••••" />
+          </div>
+          <div class="error-message" id="new-pw-error"></div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <a href="#" class="signup" id="show-login"><span>Already have an account? Sign in</span></a>
+        </div>
+        <button type="submit" class="primary-button" id="signup-btn">
+          <span class="btn-text">Create Account</span>
+          <i class="ph ph-spinner-gap spinner"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

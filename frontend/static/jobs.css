@@ -1,0 +1,326 @@
+/* 
+Mustaph Mohamed 
+CSS code for the jobs page
+Sources utilized in the writing of this css code is down below 
+https://tailwindcss.com/plus/ui-blocks/application-ui/forms/sign-in-forms
+https://web.dev/css
+https://github.com/topics/login-page?l=css
+https://www.w3schools.com/howto/howto_css_login_form.asp
+https://developer.mozilla.org/en-US/docs/Web/CSS
+https://css-tricks.com/backdrop-filter-effect-with-css/
+*/
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --bg-main: #121212;
+    --bg-card: rgba(26, 26, 26, 0.85);
+    --text-main: #ECEBE7;
+    --text-muted: #696969;
+    --accent: #D97742;
+    --accent-hover: #c2622e;
+    --border-color: rgba(217, 119, 66, 0.2);
+    --error-color: #ef4444;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* This handles header material. */
+.jobsHeader {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(12px);            
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.headerInner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    transition: text-shadow 0.3s ease;
+}
+
+.logo:hover {
+    text-shadow: 0 0 15px rgba(249, 115, 22, 0.4);
+}
+
+.navLinks a {
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-left: 24px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.navLinks a:hover,
+.navLinks a.active {
+    color: var(--text-main);
+}
+
+.navLinks a.active {
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 4px;
+}
+
+/* his handles the page's main layout.  */
+.jobsMain {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.jobsIntro {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeInDown 0.6s ease;
+}
+
+.jobsIntro h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.jobsIntro p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+/* This handles the Search Bar */
+.searchBar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 12px;
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    margin-bottom: 24px;
+    animation: fadeIn 0.8s ease;
+}
+
+.searchBar input {
+    min-width: 0;
+    background: var(--bg-main);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.searchBar input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+}
+
+#searchBtn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 0 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+#searchBtn:hover {
+    background: var(--accent-hover);
+}
+
+#searchBtn:active {
+    transform: scale(0.97);
+}
+
+/* This handles the Status Area */
+.statusArea {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+    min-height: 24px;
+}
+
+.statusArea.error {
+    color: var(--error-color);
+}
+
+/* This handles the jobs list */
+.jobsList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.jobCard {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 24px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    animation: slideUp 0.5s ease backwards;
+}
+
+.jobCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+    border-color: rgba(249, 115, 22, 0.4);
+}
+
+.jobCardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.jobCardTitle h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--text-main);
+}
+
+.jobCardTitle .company {
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.applyBtn {
+    display: inline-block;
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.applyBtn:hover {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+}
+
+.jobMeta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.jobMeta span {
+    background: var(--bg-main);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.jobMeta span.location {
+    color: var(--text-main);
+    border-color: #475569;
+}
+
+.jobMeta span.date {
+    background: transparent;
+    border: none;
+    padding-left: 0;
+}
+
+.jobDescription {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* This handles the loading of more job pages when requested by user. */
+.loadMoreWrap {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.loadMoreBtn {
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.loadMoreBtn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--text-muted);
+}
+
+/* This handles the page's animations.  */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .searchBar {
+        grid-template-columns: 1fr;
+    }
+
+    .jobCardHeader {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .jobsIntro h1 {
+        font-size: 2rem;
+    }
+}

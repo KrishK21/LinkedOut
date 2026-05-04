@@ -1,0 +1,24 @@
+Activate Source:
+
+Python app.Py
+
+Deactivate:
+
+Deactivate
+
+127.0.0.1 - - [25/Feb/2026 23:08:33] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [25/Feb/2026 23:08:34] "GET /static/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [25/Feb/2026 23:08:34] "GET /static/script.js HTTP/1.1" 200 -
+127.0.0.1 - - [25/Feb/2026 23:08:34] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [25/Feb/2026 23:08:44] "GET /health HTTP/1.1" 200 -
+127.0.0.1 - - [25/Feb/2026 23:08:53] "GET /db-test HTTP/1.1" 200 -
+
+
+===== Running the Project =====
+
+source .venv/bin/activate
+conda activate base
+cd backend
+/opt/miniconda3/bin/python web.py
+
+^^ MAC

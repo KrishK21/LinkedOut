@@ -1,0 +1,158 @@
+<!-- Mustaph Mohamed -->
+<!-- This file contains the html code for the homepage where the users land when they log in -->
+<!-- Sources utilized listed below -->
+<!-- https://www.geeksforgeeks.org/web-templates/design-a-job-search-portal-using-html-and-css/ -->
+<!-- This geekforgeek article serves as the basic fundamental of my homepage code as I build on that, my understanding and implemenation of the basics stem from this article. -->
+<!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Cheatsheet -->
+<!-- A lot of my implementation came from this cheatsheets, as it saved me the time and energy to lloking up of all the ways to implemnt something as it holds a lot the information and how it is implemented. -->
+<!-- This is another documentation article that helped as it had step by step and explanation of HTML functions been used. -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LinkedOut — Home</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='homepage.css') }}"
+    />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- This handles the importation of the Phosphor icon library so that it can used for all our icons -->
+  </head>
+
+  <body>
+    <!-- This handles the navigation bar, it also has the search bar and the our drop down menu with options. -->
+    <nav class="navbar">
+      <!-- This handles our website name, down the line when we make a logo it will be handled by this and update it later. -->
+      <div class="nav-logo">
+        <span>LinkedOut</span>
+      </div>
+
+      <!-- I removed the search bar, and moved it to the jobs pages, keeping the homepage clean and using tabs. -->
+      <div class="nav-tabs">
+        <a href="/home" class="nav-tab active"
+          ><i class="ph ph-house"></i> Home</a
+        >
+        <a href="/jobs/browse" class="nav-tab"><i class="ph ph-briefcase"></i> Jobs</a>
+      </div>
+
+      <!-- This handles our drop down menu where our profile, the setting, logout and other functions will be . -->
+      <div class="nav-right">
+        <div class="avatar-menu" id="avatar-menu">
+          <div class="avatar-btn" id="avatar-btn">
+            <i class="ph ph-user-circle"></i>
+            <span id="nav-username"></span>
+            <i class="ph ph-caret-down"></i>
+          </div>
+
+          <!-- This handles our drop down menu and makes it hidden until we hover and click on it as we don't want that info see on the frontpage.-->
+          <div class="dropdown" id="dropdown">
+            <a href="/profile-page"><i class="ph ph-user"></i> My Profile</a>
+            <a href="#"><i class="ph ph-gear"></i> Settings</a>
+            <hr />
+            <!--This handles the redirection once a user logs out, they will be redirected to the login page to log in
+        again.-->
+            <a href="#" id="logout-btn" class="logout-link">
+              <i class="ph ph-sign-out"></i> Logout
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- This handles the welcoming of the user once they get to the homepage. -->
+    <section class="hero">
+      <div class="hero-content">
+        <h2>Welcome back, <span id="banner-username"></span></h2>
+        <p class="tagline">Cut The Chase. Find The Job.</p>
+        <p class="hero-sub">Find your next opportunity.</p>
+        <div class="hero-buttons">
+          <a href="/jobs/browse" class="btn-primary">
+            <i class="ph ph-briefcase"></i> Browse Jobs
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- This is a helpful function where it allows our users to track their job applications in the main page, made easier to find and use. -->
+    <section class="tracker">
+      <div class="tracker-header">
+        <h2>My Applications</h2>
+
+        <!-- This handles the creation of our filter in the job application tracker, so that we can only see the data from chosen time period. -->
+        <div class="tracker-filters">
+          <button class="filter-btn active" data-filter="all">All Time</button>
+          <button class="filter-btn" data-filter="month">This Month</button>
+          <button class="filter-btn" data-filter="week">This Week</button>
+          <button class="filter-btn" data-filter="three">Last 3 Months</button>
+        </div>
+      </div>
+
+      <!-- This handles the expanding of our boxes so that more data is displayed, this helps keep our page less cluttered and at the same hold our data.-->
+      <div class="tracker-grid">
+        <!-- This is for the box that showcases the jobs applied to. -->
+        <div class="tracker-card" id="card-applied">
+          <i class="ph ph-paper-plane-tilt"></i>
+          <h3 id="count-applied">0</h3>
+          <p>Applied</p>
+          <!-- This handles the displaying of more information in our boxes when the user hovers, info such as last job applied, company name and position and so on. -->
+          <div class="card-detail" id="detail-applied">
+            Most recent: <span id="recent-applied">—</span>
+          </div>
+        </div>
+
+        <!-- This handles the box that showcases the amount of interviews we have got so far from the jobs we applied to. -->
+        <div class="tracker-card" id="card-interviews">
+          <i class="ph ph-chats"></i>
+          <h3 id="count-interviews">0</h3>
+          <p>Interviews</p>
+          <!-- This handles the displaying of more information in our boxes when the user hovers, info such as company name and position, interview date, interview step and so on. -->
+          <div class="card-detail" id="detail-interviews">
+            Upcoming: <span id="recent-interviews">—</span>
+          </div>
+        </div>
+
+        <!-- This handles the displaying of offer data the user gets from the job applications.-->
+        <div class="tracker-card" id="card-offers">
+          <i class="ph ph-trophy"></i>
+          <h3 id="count-offers">0</h3>
+          <p>Offers</p>
+          <!-- This handles the displaying of more information in our boxes when the user hovers, info such as company name and position offer and if accepted or rejected by user. -->
+          <div class="card-detail" id="detail-offers">
+            Latest: <span id="recent-offers">—</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- This handles the information display on the bottom of our page.  -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span>LinkedOut</span>
+          <p class="footer-tagline">Cut The Chase. Find The Job.</p>
+        </div>
+
+        <!-- This showcases our teams members and the class info, rather than the traditional quick links that companies put in their footer. -->
+        <div class="footer-info">
+          <h4>About This Project</h4>
+          <p>
+            LinkedOut is a job search web application that allows users to find
+            jobs without the hassle and fake acting every job application
+            companies have their users involved in.
+          </p>
+          <p><strong>Course:</strong> CS 320 — Intro to Software Engineering</p>
+          <p><strong>Project:</strong> LinkedOut — Semester Long Project</p>
+          <p><strong>Team:</strong> Mustaph Mohamed &amp; Krish Kanda</p>
+          <p class="footer-copy">
+            &copy; 2026 LinkedOut. All rights reserved by Mustaph Mohamed &amp;
+            Krish Kanda.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='homepage.js') }}"></script>
+  </body>
+</html>

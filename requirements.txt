@@ -1,0 +1,6 @@
+source .venv/bin/activate
+conda activate base
+cd backend
+/opt/miniconda3/bin/python web.py
+
+^^ MAC
