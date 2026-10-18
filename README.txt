@@ -85,10 +85,6 @@ LinkedOut/
 ### Installation
 
 **1. Clone the repo**
-```bash
-git clone https://github.com/Mustaph7/LinkedOut.git
-cd LinkedOut
-```
 
 **2. Create and activate a virtual environment**
 
